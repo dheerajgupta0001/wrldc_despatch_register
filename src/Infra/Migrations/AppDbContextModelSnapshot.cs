@@ -177,76 +177,17 @@ namespace Infra.Migrations
                     b.ToTable("Designations");
                 });
 
-            modelBuilder.Entity("Core.Entities.Notesheet", b =>
+            modelBuilder.Entity("Core.Entities.Despatch", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("ApprovingAuthority")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("BPSerialNo")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("BPUnderHead")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("BillOfQuantity")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("BudgetOfferAddress")
-                        .HasMaxLength(250)
-                        .HasColumnType("character varying(250)");
-
-                    b.Property<DateTime>("BudgetOfferDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("BudgetOfferReference")
-                        .HasColumnType("text");
-
-                    b.Property<string>("BudgetOfferValidity")
-                        .HasColumnType("text");
-
-                    b.Property<string>("BudgetProvision")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("CPG")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("DopClause")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("DopSection")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<float>("EstimatedCost")
-                        .HasColumnType("real");
-
-                    b.Property<string>("GeMNonAvailabilityCertificate")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Guarantee_Warranty")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("IndentingDept")
@@ -259,87 +200,22 @@ namespace Infra.Migrations
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
 
-                    b.Property<string>("ListOfParties")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ModeOfTerm")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("OtherPointsRelevantWithCase")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PackageName")
+                    b.Property<string>("Purpose")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
-
-                    b.Property<string>("Payment_Terms_CPG")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ProprietaryArticleCertificate")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ReasonsForModeOfTender")
-                        .HasColumnType("text");
 
                     b.Property<string>("ReferenceNo")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("character varying(250)");
 
-                    b.Property<string>("ScopeOfWork")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("SpecialConditionsOfContract")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Technical_Specification")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("character varying(250)");
-
-                    b.Property<string>("TypeOfBidding")
-                        .HasColumnType("text");
-
-                    b.Property<string>("WorkCompletionSchedule")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ReferenceNo")
                         .IsUnique();
 
-                    b.ToTable("Notesheets");
-                });
-
-            modelBuilder.Entity("Core.Entities.ProposalForApproval", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("NotesheetId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("ProposalOption")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("character varying(250)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NotesheetId", "ProposalOption")
-                        .IsUnique();
-
-                    b.ToTable("ProposalForApprovals");
+                    b.ToTable("Despatches");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -495,17 +371,6 @@ namespace Infra.Migrations
                     b.Navigation("Designation");
                 });
 
-            modelBuilder.Entity("Core.Entities.ProposalForApproval", b =>
-                {
-                    b.HasOne("Core.Entities.Notesheet", "Notesheet")
-                        .WithMany("ProposalForApprovals")
-                        .HasForeignKey("NotesheetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Notesheet");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -555,11 +420,6 @@ namespace Infra.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Core.Entities.Notesheet", b =>
-                {
-                    b.Navigation("ProposalForApprovals");
                 });
 #pragma warning restore 612, 618
         }

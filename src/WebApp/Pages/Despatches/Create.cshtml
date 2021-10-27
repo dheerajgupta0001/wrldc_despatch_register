@@ -1,0 +1,59 @@
+﻿@page
+@model WebApp.Pages.Despatches.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <h1>Create Despatch</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-8">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Despatch.IndentingDept" class="control-label required-field">Indenting Department</label>
+                    @*<input asp-for="Despatch.IndentingDept" class="form-control" />*@
+                    <select asp-for="Despatch.IndentingDept" class="form-control" asp-items="Model.IndentingDeptOptions"></select>
+                    <span asp-validation-for="Despatch.IndentingDept" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Despatch.ReferenceNo" class="control-label required-field">Reference No.</label>
+                    <input asp-for="Despatch.ReferenceNo" class="form-control" />
+                    <span asp-validation-for="Despatch.ReferenceNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Despatch.Purpose" class="control-label required-field">Purpose</label>
+                    <input asp-for="Despatch.Purpose" class="form-control" />
+                    <span asp-validation-for="Despatch.Purpose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create Despatch" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="Index" class="btn btn-primary">Back to List</a>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @*<script src="~/js/multiSelect/multiSelect.js"></script>*@
+    <style>
+        .tooltip-inner {
+            max-width: 80% !important;
+        }
+        label.control-label {
+            color: saddlebrown;
+            font-weight: 400;
+        }
+        .required-field::after {
+            content: "*";
+            color: red;
+            font-size: 21px;
+            font-weight: 900;
+        }
+    </style>
+}

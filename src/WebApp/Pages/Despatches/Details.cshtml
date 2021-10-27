@@ -1,0 +1,71 @@
+﻿@page
+@model WebApp.Pages.Despatches.DetailsModel
+@using Core.Entities
+
+@{
+    ViewData["Title"] = "Proposal Details";
+}
+<div class="container">
+    <div>
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <table style="margin: auto;">
+                    <tbody>
+                        <tr>
+                            <td style="text-align:center">
+                                <span><b>Power System Operation Coorporation Limited</b></span><br>
+                                <span style="font-size:small"><b>(A Government of India Enterprise)</b></span><br>
+                                <span><b>WRLDC</b></span>
+                            </td>
+                            <td>
+                                <img src="~/assets/img/logo.png" width="100px" height="100px" style="float:right">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <span class="sectionHeading">Indenting Department: </span>
+                <span>@Html.DisplayFor(model => model.Despatch.IndentingDept)</span><br />
+
+                <span class="sectionHeading">Reference Number:</span>
+                <p>
+                    @Html.DisplayFor(model => model.Despatch.ReferenceNo)
+                </p>
+
+                <span class="sectionHeading">Purpose</span>
+                <p>
+                    @Html.DisplayFor(model => model.Despatch.Purpose)
+                </p>
+
+            </div>
+        </div>
+        <div>
+            <a asp-page="./Edit" asp-route-id="@Model.Despatch.Id" class="btn btn-info">Edit</a> |
+            <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/numToWords.js"></script>
+    <style>
+        body {
+            background-color: transparent;
+        }
+
+        .sectionHeading {
+            font-weight: bold;
+        }
+
+        .rightAlign {
+            text-align: right;
+        }
+
+        .leftMargin1cm {
+            margin-left: 1cm;
+        }
+    </style>
+}

@@ -20,8 +20,7 @@ namespace Infra.Persistence
         private readonly ICurrentUserService _currentUserService;
         public DbSet<Department> Departments { get; set; }
         public DbSet<Designation> Designations { get; set; }
-        public DbSet<Notesheet> Notesheets { get; set; }
-        public DbSet<ProposalForApproval> ProposalForApprovals { get; set; }
+        public DbSet<Despatch> Despatches { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options, ICurrentUserService currentUserService)
             : base(options)
