@@ -69,7 +69,11 @@ namespace Application.Despatches.Commands.EditDespatch
             {
                 notesheet.Purpose = request.Purpose;
             }
-            
+            if (notesheet.SendTo != request.SendTo)
+            {
+                notesheet.SendTo = request.SendTo;
+            }
+
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);

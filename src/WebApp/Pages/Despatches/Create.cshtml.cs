@@ -24,7 +24,6 @@ namespace WebApp.Pages.Despatches
             _mediator = mediator;
         }
         public SelectList IndentingDeptOptions { get; set; }
-        public SelectList TypeOptions { get; set; }
         
         [BindProperty]
         public CreateDespatchCommand Despatch { get; set; }

@@ -27,6 +27,10 @@ namespace Infra.Persistence.Configurations
             builder.Property(b => b.Purpose)
                 .IsRequired()
                 .HasMaxLength(500);
+
+            builder.Property(b => b.SendTo)
+                .IsRequired()
+                .HasMaxLength(500);
         }
     }
 }

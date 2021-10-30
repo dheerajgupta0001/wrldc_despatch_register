@@ -12,20 +12,25 @@
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Despatch.IndentingDept" class="control-label required-field">Indenting Department</label>
-                    @*<input asp-for="Despatch.IndentingDept" class="form-control" />*@
-                    <select asp-for="Despatch.IndentingDept" class="form-control" asp-items="Model.IndentingDeptOptions"></select>
-                    <span asp-validation-for="Despatch.IndentingDept" class="text-danger"></span>
-                </div>
-                <div class="form-group">
                     <label asp-for="Despatch.ReferenceNo" class="control-label required-field">Reference No.</label>
                     <input asp-for="Despatch.ReferenceNo" class="form-control" />
                     <span asp-validation-for="Despatch.ReferenceNo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Despatch.Purpose" class="control-label required-field">Purpose</label>
+                    <label asp-for="Despatch.SendTo" class="control-label required-field">To</label>
+                    <input asp-for="Despatch.SendTo" class="form-control" />
+                    <span asp-validation-for="Despatch.SendTo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Despatch.Purpose" class="control-label required-field">Subject</label>
                     <input asp-for="Despatch.Purpose" class="form-control" />
                     <span asp-validation-for="Despatch.Purpose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Despatch.IndentingDept" class="control-label required-field">Department</label>
+                    @*<input asp-for="Despatch.IndentingDept" class="form-control" />*@
+                    <select asp-for="Despatch.IndentingDept" class="form-control" asp-items="Model.IndentingDeptOptions"></select>
+                    <span asp-validation-for="Despatch.IndentingDept" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Create Despatch" class="btn btn-primary" />

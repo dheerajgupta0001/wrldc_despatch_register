@@ -14,6 +14,7 @@ namespace Application.Despatches.Commands.CreateDespatch
             RuleFor(x => x.ReferenceNo).NotEmpty();
             RuleFor(x => x.IndentingDept).NotEmpty();
             RuleFor(x => x.Purpose).NotEmpty();
+            RuleFor(x => x.SendTo).NotEmpty();
         }
     }
 }

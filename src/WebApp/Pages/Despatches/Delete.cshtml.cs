@@ -57,8 +57,8 @@ namespace WebApp.Pages.Despatches
             // check if we have any errors and redirect if successful
             if (errors.Count == 0)
             {
-                _logger.LogInformation("Despatch delete operation successful");
-                return RedirectToPage($"./{nameof(Index)}").WithSuccess("Despatch Deletion done");
+                _logger.LogInformation("Despatch Entry delete operation successful");
+                return RedirectToPage($"./{nameof(Index)}").WithSuccess("Despatch Entry Deletion done");
             }
 
             return RedirectToPage($"./{nameof(Index)}").WithDanger("Unable to delete Despatch...");

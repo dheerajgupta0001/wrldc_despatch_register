@@ -25,7 +25,8 @@ namespace Application.Despatches.Commands.CreateDespatch
             {
                 IndentingDept = request.IndentingDept,
                 ReferenceNo = request.ReferenceNo,
-                Purpose = request.Purpose
+                Purpose = request.Purpose,
+                SendTo = request.SendTo
             };
 
             _context.Despatches.Add(despatch);

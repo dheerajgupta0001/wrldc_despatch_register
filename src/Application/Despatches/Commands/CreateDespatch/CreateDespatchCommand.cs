@@ -12,6 +12,7 @@ namespace Application.Despatches.Commands.CreateDespatch
         public string IndentingDept { get; set; }
         public string ReferenceNo { get; set; }
         public string Purpose { get; set; }
+        public string SendTo { get; set; }
 
     }
 }

@@ -17,5 +17,6 @@ namespace Core.Entities
 
         [Required]
         public string Purpose { get; set; }
+        public string SendTo { get; set; }
     }
 }

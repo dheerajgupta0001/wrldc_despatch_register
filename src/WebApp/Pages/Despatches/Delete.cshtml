@@ -6,15 +6,9 @@
 }
 
 <div class="container">
-    <h3>Are you sure you want to delete this Contract Proposal ?</h3>
+    <h3>Are you sure you want to delete this Despatch Entry ?</h3>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Despatch.IndentingDept)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Despatch.IndentingDept)
-        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Despatch.ReferenceNo)
         </dt>
@@ -22,10 +16,22 @@
             @Html.DisplayFor(model => model.Despatch.ReferenceNo)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Despatch.SendTo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Despatch.SendTo)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Despatch.Purpose)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Despatch.Purpose)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Despatch.IndentingDept)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Despatch.IndentingDept)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Despatch.CreatedBy)

@@ -16,6 +16,7 @@ namespace Application.Despatches.Commands.EditDespatch
         public string IndentingDept { get; set; }
         public string ReferenceNo { get; set; }
         public string Purpose { get; set; }
+        public string SendTo { get; set; }
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Despatch, EditDespatchCommand>()

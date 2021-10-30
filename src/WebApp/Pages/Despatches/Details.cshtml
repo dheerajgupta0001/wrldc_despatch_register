@@ -28,18 +28,34 @@
         <br />
         <div class="row">
             <div class="col-md-12">
-                <span class="sectionHeading">Indenting Department: </span>
-                <span>@Html.DisplayFor(model => model.Despatch.IndentingDept)</span><br />
 
-                <span class="sectionHeading">Reference Number:</span>
-                <p>
+                <span class="sectionHeading">Despatch Id: </span>
+                <span>@Html.DisplayFor(model => model.Despatch.Id)</span> <br /><br />
+
+                <span class="sectionHeading">Reference Number: </span>
+                <span>
                     @Html.DisplayFor(model => model.Despatch.ReferenceNo)
-                </p>
+                </span> <br /><br />
 
-                <span class="sectionHeading">Purpose</span>
-                <p>
+                <span class="sectionHeading">To: </span>
+                <span>
+                    @Html.DisplayFor(model => model.Despatch.SendTo)
+                </span> <br /><br />
+
+                <span class="sectionHeading">Subject: </span>
+                <span>
                     @Html.DisplayFor(model => model.Despatch.Purpose)
-                </p>
+                </span> <br /><br />
+
+                <span class="sectionHeading">Department: </span>
+                <span>@Html.DisplayFor(model => model.Despatch.IndentingDept)</span><br /><br />
+
+                <span class="sectionHeading">Created By: </span>
+                <span>@Html.DisplayFor(model => model.Despatch.CreatedBy)</span><br /><br />
+
+                <span class="sectionHeading">Creation Date: </span>
+                <span>@Html.DisplayFor(model => model.Despatch.Created)</span><br />
+
 
             </div>
         </div>
