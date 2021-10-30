@@ -12,7 +12,7 @@
         <p>
             <a asp-page="Create" class="btn btn-success btn-sm">Create New</a>
         </p>
-        <table class="table table-bordered table-hover display" id="notesheet_table">
+        <table class="table table-bordered table-hover display" id="despatch_table">
             <thead>
                 <tr>
                     <th>
@@ -127,12 +127,12 @@
         $(document).ready(function () {
             // https://datatables.net/examples/api/multi_filter.html
             // Setup - add a text input to each footer cell
-            $('#notesheet_table tfoot th').each(function () {
+            $('#despatch_table tfoot th').each(function () {
                 //var title = $(this).text();
                 $(this).html('<input type="text" placeholder="Search" />');
             });
 
-            var notesheet_table = $('#notesheet_table').DataTable({
+            var despatch_table = $('#despatch_table').DataTable({
                 fixedHeader: true,
                 "lengthMenu": [[10, 20, 50, 100, -1], [10, 20, 50, 100, "All"]],
                 "pageLength": 50,
@@ -154,17 +154,17 @@
                 ],
             });
 
-            var r = $('#notesheet_table tfoot tr');
+            var r = $('#despatch_table tfoot tr');
             r.find('th').each(function () {
                 $(this).css('padding', '3px');
             });
 
-            $('#notesheet_table thead').append(r);
+            $('#despatch_table thead').append(r);
 
             // Apply the filter
             // https://www.jqueryscript.net/demo/DataTables-Jquery-Table-Plugin/examples/api/multi_filter.html
-            $("#notesheet_table thead input").on('keyup change', function () {
-                notesheet_table
+            $("#despatch_table thead input").on('keyup change', function () {
+                despatch_table
                     .column($(this).parent().index() + ':visible')
                     .search(this.value)
                     .draw();

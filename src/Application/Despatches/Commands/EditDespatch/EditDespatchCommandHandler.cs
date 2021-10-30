@@ -41,10 +41,10 @@ namespace Application.Despatches.Commands.EditDespatch
                 return new List<string>() { errorMsg };
             }
 
-            // fetch the notesheet for editing
-            var notesheet = await _context.Despatches.Where(ns => ns.Id == request.Id).FirstOrDefaultAsync(cancellationToken);
+            // fetch the despatch for editing
+            var despatch = await _context.Despatches.Where(ns => ns.Id == request.Id).FirstOrDefaultAsync(cancellationToken);
 
-            if (notesheet == null)
+            if (despatch == null)
             {
                 string errorMsg = $"Proposal Id {request.Id} not present for editing";
                 return new List<string>() { errorMsg };
@@ -52,26 +52,26 @@ namespace Application.Despatches.Commands.EditDespatch
 
             // check if user is authorized for editing proposal
             IList<string> usrRoles = await _userManager.GetRolesAsync(curUsr);
-            if (curUsr.UserName != notesheet.CreatedBy && !usrRoles.Contains(SecurityConstants.AdminRoleString))
+            if (curUsr.UserName != despatch.CreatedBy && !usrRoles.Contains(SecurityConstants.AdminRoleString))
             {
                 return new List<string>() { "This user is not authorized for updating this proposal since this is not his created by this user and he is not in admin role" };
             }
 
-            if (notesheet.IndentingDept != request.IndentingDept) //new field
+            if (despatch.IndentingDept != request.IndentingDept) //new field
             {
-                notesheet.IndentingDept = request.IndentingDept;
+                despatch.IndentingDept = request.IndentingDept;
             }
-            if (notesheet.ReferenceNo != request.ReferenceNo)
+            if (despatch.ReferenceNo != request.ReferenceNo)
             {
-                notesheet.ReferenceNo = request.ReferenceNo;
+                despatch.ReferenceNo = request.ReferenceNo;
             }
-            if (notesheet.Purpose != request.Purpose)
+            if (despatch.Purpose != request.Purpose)
             {
-                notesheet.Purpose = request.Purpose;
+                despatch.Purpose = request.Purpose;
             }
-            if (notesheet.SendTo != request.SendTo)
+            if (despatch.SendTo != request.SendTo)
             {
-                notesheet.SendTo = request.SendTo;
+                despatch.SendTo = request.SendTo;
             }
 
             try

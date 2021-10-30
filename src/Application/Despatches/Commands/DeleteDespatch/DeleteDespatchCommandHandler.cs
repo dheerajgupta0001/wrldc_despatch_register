@@ -41,10 +41,10 @@ namespace Application.Despatches.Commands.DeleteDespatch
                 return new List<string>() { errorMsg };
             }
 
-            // fetch the notesheet for editing
-            var notesheet = await _context.Despatches.Where(ns => ns.Id == request.Id).FirstOrDefaultAsync(cancellationToken);
+            // fetch the despatch for editing
+            var despatch = await _context.Despatches.Where(ns => ns.Id == request.Id).FirstOrDefaultAsync(cancellationToken);
 
-            if (notesheet == null)
+            if (despatch == null)
             {
                 string errorMsg = $"Despatch Id {request.Id} not present for deletion";
                 return new List<string>() { errorMsg };
@@ -52,12 +52,12 @@ namespace Application.Despatches.Commands.DeleteDespatch
 
             // check if user is authorized for deleting the proposal
             IList<string> usrRoles = await _userManager.GetRolesAsync(curUsr);
-            if (curUsr.UserName != notesheet.CreatedBy && !usrRoles.Contains(SecurityConstants.AdminRoleString))
+            if (curUsr.UserName != despatch.CreatedBy && !usrRoles.Contains(SecurityConstants.AdminRoleString))
             {
                 return new List<string>() { "This user is not authorized for deleting this proposal since this is not his created by this user and he is not in admin role" };
             }
 
-            _context.Despatches.Remove(notesheet);
+            _context.Despatches.Remove(despatch);
             await _context.SaveChangesAsync(cancellationToken);
 
             return new List<string>();

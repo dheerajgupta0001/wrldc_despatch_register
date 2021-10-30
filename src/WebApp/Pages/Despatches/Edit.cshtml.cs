@@ -43,16 +43,16 @@ namespace WebApp.Pages.Despatches
             }
 
 
-            Despatch notesheet = await _mediator.Send(new GetDespatchByIdQuery() { Id = id.Value });
+            Despatch despatch = await _mediator.Send(new GetDespatchByIdQuery() { Id = id.Value });
 
-            if (notesheet == null)
+            if (despatch == null)
             {
                 return NotFound();
             }
 
-            InitSelectListItems(notesheet);
+            InitSelectListItems(despatch);
 
-            Despatch = _mapper.Map<EditDespatchCommand>(notesheet);
+            Despatch = _mapper.Map<EditDespatchCommand>(despatch);
 
             return Page();
         }
@@ -61,14 +61,14 @@ namespace WebApp.Pages.Despatches
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            Despatch notesheet = await _mediator.Send(new GetDespatchByIdQuery() { Id = Despatch.Id });
+            Despatch despatch = await _mediator.Send(new GetDespatchByIdQuery() { Id = Despatch.Id });
 
-            if (notesheet == null)
+            if (despatch == null)
             {
                 return NotFound();
             }
 
-            InitSelectListItems(notesheet);
+            InitSelectListItems(despatch);
 
             if (!ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace WebApp.Pages.Despatches
             return Page();
         }
 
-        public void InitSelectListItems(Despatch notesheet)
+        public void InitSelectListItems(Despatch despatch)
         {
             IndentingDeptOptions = new SelectList(IndentingDeptConstants.GetIndentingDeptOptions());
         }
